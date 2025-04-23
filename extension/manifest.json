@@ -5,13 +5,18 @@
   "description": "Floating transparent AI debugger for n8n",
   "permissions": ["tabs", "storage", "activeTab", "scripting"],
   "host_permissions": ["https://*.anthropic.com/*"],
-  "background": { "service_worker": "background.ts", "type": "module" },
+  "background": {
+    "service_worker": "src/background.ts",
+    "type": "module"
+  },
   "content_scripts": [{
     "matches": ["https://app.n8n.cloud/*", "http://localhost:5678/*"],
-    "js": ["content.tsx"],
+    "js": ["src/content.tsx"],
     "run_at": "document_end"
   }],
-  "action": { "default_title": "snap n8n" },
+  "action": {
+    "default_title": "snap n8n"
+  },
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   }
